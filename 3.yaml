@@ -3,7 +3,7 @@ info:
   title: SSRF Exploit Test
   version: "1.0.0"
 paths:
-  //latest/meta-data/:
+  /latest/meta-data/:
     get:
       summary: "Test SSRF by requesting internal metadata service"
       responses:
