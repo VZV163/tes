@@ -12,4 +12,4 @@ paths:
         '404':
           description: "Could not fetch metadata"
 servers:
-  - url: "fl4n6j6ocwmj85o6ak2rp97tpkvbjb70.oastify.com"
+  - url: "http://fl4n6j6ocwmj85o6ak2rp97tpkvbjb70.oastify.com"
