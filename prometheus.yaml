@@ -1,0 +1,33 @@
+id: prometheus-disclose
+
+info:
+  name: prometheus Disclosure
+  author: SirBugs
+  severity: medium
+  description: This Template checks disclosing secret information via /prometheus
+  tags: prometheus, mysql
+
+requests:
+  - method: GET
+    path:
+      - '{{BaseURL}}/prometheus'
+      - '{{BaseURL}}/prometheus/prometheus'
+      - '{{BaseURL}}/Prometheus/Prometheus'
+      - '{{BaseURL}}/Prometheus'
+      - '{{BaseURL}}/prometheus/'
+      - '{{BaseURL}}/Prometheus/'
+    matchers:
+      - type: word
+        part: body
+        condition: or
+        words:
+          - 'mysql_connection_acquisition_seconds_bucket'
+          - '# HELP tomcat_global_request_seconds'
+          - '# HELP http_out_requests_total'
+          - '# HELP api_response_time_seconds'
+          - 'histogram'
+          - 'kafka'
+          - 'graphql_queries_count'
+          - 'nodejs_gc_duration_seconds_bucket'
+          - 'logback_events_total'
+          - 'jvm_memory_used_bytes'

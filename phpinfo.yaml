@@ -1,0 +1,26 @@
+id: metrics-disclose
+
+info:
+  name: php
+  author: V
+  severity: medium
+  description: This Template checks disclosing secret information via /P
+  tags: zobr
+
+requests:
+  - method: GET
+    path:
+      - '{{BaseURL}}/phpinfo.php'
+      - '{{BaseURL}}/info.php'
+      - '{{BaseURL}}/function.phpinfo.php'
+      - '{{BaseURL}}/test.php'
+
+    matchers:
+      - type: word
+        part: body
+        condition: or
+        words:
+          - 'PHP Version'
+          - 'Server API '
+          - 'Configuration'
+          - 'Build Date'

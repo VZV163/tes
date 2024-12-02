@@ -1,0 +1,59 @@
+id: metrics-disclose
+
+info:
+  name: metrics Disclosure
+  author: V
+  severity: medium
+  description: This Template checks disclosing secret information via /m
+  tags: zobr
+
+requests:
+  - method: GET
+    path:
+      - '{{BaseURL}}/metrics'
+      - '{{BaseURL}}/Metrics'
+      - '{{BaseURL}}/MetricS'
+      - '{{BaseURL}}/Metrics/'
+      - '{{BaseURL}}/METRICS'
+      - '{{BaseURL}}/metrics/'
+      - '{{BaseURL}}/api/metrics'
+      - '{{BaseURL}}/api/Metrics'
+      - '{{BaseURL}}/api/MetricS'
+      - '{{BaseURL}}/api/METRICS'
+      - '{{BaseURL}}/api/v1/MetricS'
+      - '{{BaseURL}}/api/v1/metrics'
+      - '{{BaseURL}}/api/v1/Metrics'
+      - '{{BaseURL}}/api/v1/MetricS'
+      - '{{BaseURL}}/api/v1/METRICS'
+      - '{{BaseURL}}/api/v2/MetricS'
+      - '{{BaseURL}}/api/v2/Metrics'
+      - '{{BaseURL}}/api/v2/metrics'
+      - '{{BaseURL}}/api/v2/MetricS'
+      - '{{BaseURL}}/api/v2/METRICS'
+      - '{{BaseURL}}/public-api/metrics'
+      - '{{BaseURL}}/public-api/Metrics'
+      - '{{BaseURL}}/public-api/MetricS'
+      - '{{BaseURL}}/public-api/metrIcS'
+      - '{{BaseURL}}/public-api/METRICS'
+      - '{{BaseURL}}/Public-api/metrics'
+      - '{{BaseURL}}/Public-api/Metrics'
+      - '{{BaseURL}}/Public-api/MetricS'
+      - '{{BaseURL}}/Public-api/metrIcS'
+      - '{{BaseURL}}/Public-api/METRICS'
+    matchers:
+      - type: word
+        part: body
+        condition: or
+        words:
+          - 'HELP http_request_duration_seconds'
+          - 'nodejs_gc_duration_seconds_bucket'
+          - 'nodejs_version_info'
+          - 'http_request_duration_seconds_bucket'
+          - '# HELP nodejs_heap_space_size_available_bytes'
+          - 'Apdex|server'
+          - 'graphql_queries_count'
+          - '# HELP api_response_time_seconds'
+          - 'histogram'
+          - 'api_response_time_seconds_bucket'
+          - '# HELP http_out_requests_total'
+          - 'kafka'
